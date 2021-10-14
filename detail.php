@@ -26,35 +26,13 @@ $author = $author_firstname . " " . $author_lastname;
     <title>Great Quotes</title>
 
     <style>
-        /*h1 {
-            color: gold;
-            margin: 20px;
-            font-size: 100px;
-        }
-        h2 {
-            color: gray;
-        }
-        #buttons {
-            margin-left: 50px;
-        }
-        #detailbox {
-            background-color: lightgray;
-            margin: 50px;
-            padding: 50px;
-            border-radius: 40px;
-        }
-        .flexbox {
-            display: flex;
-        }
-        #description {
-            padding: 25px 100px 25px 25px;
-        }*/
         .card {
             background-color: #fff;
             border-radius: 2.5rem;
         }
 
-        .detail .quote-icon-left, .quote-icon-right {
+        .detail .quote-icon-left,
+        .quote-icon-right {
             font-size: 36px;
         }
 
@@ -88,12 +66,13 @@ $author = $author_firstname . " " . $author_lastname;
                                     <cite title="Source Title"><?= $author ?></cite>
                                 </figcaption>
                             </figure>
-                            
+
                             <div id="buttons">
-                                <a href="modify.php?index=<?= $index ?>"><button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modal">Modify</button></a>
-                                <a href="delete.php?index=<?= $index ?>"><button type="button" class="btn btn-danger">Delete</button></a>
+                                <a href="index.php"><button type="button" class="btn btn-outline-primary">Back To Homepage</button></a>
+                                <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modal">Modify</button>
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete">Delete</button>
                             </div>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -114,41 +93,55 @@ $author = $author_firstname . " " . $author_lastname;
                         <input type="hidden" name="index" id="hiddenField" value="<?= $index ?>" />
                         <div class="mb-3">
                             <label for="name" class="col-form-label">Display name:</label>
-                            <input type="text" class="form-control" id="name" name="name"
-                                value="<?= $name ?>" readonly>
+                            <input type="text" class="form-control" id="name" name="name" value="<?= $name ?>" readonly>
                         </div>
                         <div class="mb-3">
                             <label for="username" class="col-form-label">Username:</label>
-                            <input type="text" class="form-control" id="username"
-                                name="username" value="<?= $username ?>" readonly>
+                            <input type="text" class="form-control" id="username" name="username" value="<?= $username ?>" readonly>
                         </div>
                         <div class="mb-3">
                             <label for="author" class="col-form-label">Author's first name:</label>
-                            <input type="text" class="form-control" id="author_firstname" name="author_firstname" value="<?= $author_firstname ?>"
-                                required>
+                            <input type="text" class="form-control" id="author_firstname" name="author_firstname" value="<?= $author_firstname ?>" required>
                         </div>
                         <div class="mb-3">
                             <label for="author" class="col-form-label">Author's last name:</label>
-                            <input type="text" class="form-control" id="author_lastname" name="author_lastname" value="<?= $author_lastname ?>"
-                                required>
+                            <input type="text" class="form-control" id="author_lastname" name="author_lastname" value="<?= $author_lastname ?>" required>
                         </div>
                         <div class="mb-3">
                             <label for="quote" class="col-form-label">Quote:</label>
-                            <textarea type="text" class="form-control" id="quote"
-                                name="quote" value="<?= $quote ?>" required></textarea>
+                            <textarea type="text" class="form-control" id="quote" name="quote" value="<?= $quote ?>" required></textarea>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Edit</button>
+                        <a href="modify.php?index=<?= $index ?>"><button type="submit" class="btn btn-primary">Edit</button></a>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous">
+    <div class="modal" id="delete" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Delete quote</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure that you want to delete this quote?</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="delete.php?index=<?= $index ?>"><button type="button" class="btn btn-danger">Delete</button></a>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous">
     </script>
 
 </body>
